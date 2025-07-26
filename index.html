@@ -1,71 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abhishek's Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-content">
-      <div class="profile-photo">
-        <img src="C:\Users\Abhishek\Pictures\sdfgasd.png" alt="Abhishek's Display Photo">
-      </div>
-      <h1>Hi, I'm <span class="highlight">Abhishek</span></h1>
-      <p class="tagline"> Developer | Freelancer | Tech Enthusiast</p>
-      <a href="#projects" class="cta-button">View My Work</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhishek Bogahawaththa</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #0c0c0c;
+        color: #ffffff;
+        overflow: hidden;
+      }
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(0, 255, 255, 0.15);
+        animation: floatUp 20s infinite linear;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) scale(0.5);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1);
+          opacity: 0;
+        }
+      }
+      .charm-hover {
+        transition: transform 0.2s ease-out;
+        will-change: transform;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bubbles Background -->
+    <div class="absolute inset-0 overflow-hidden z-0">
+      <div class="bubble" style="width: 120px; height: 120px; left: 10%; animation-delay: 0s;"></div>
+      <div class="bubble" style="width: 80px; height: 80px; left: 25%; animation-delay: 3s;"></div>
+      <div class="bubble" style="width: 150px; height: 150px; left: 40%; animation-delay: 5s;"></div>
+      <div class="bubble" style="width: 100px; height: 100px; left: 60%; animation-delay: 7s;"></div>
+      <div class="bubble" style="width: 130px; height: 130px; left: 75%; animation-delay: 2s;"></div>
+      <div class="bubble" style="width: 70px; height: 70px; left: 85%; animation-delay: 6s;"></div>
     </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I'm a university undergraduate with a passion for building web and mobile applications. As a freelancer, I've worked on diverse projects, from e-commerce websites to mobile apps, and I love solving real-world problems with code.</p>
-    <div class="skills">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>React</span>
-      <span>Flutter</span>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>E-Commerce Website</h3>
-        <p>A fully functional e-commerce site built with React and Node.js.</p>
-        <a href="#" class="project-link">Live Demo</a>
+    <!-- Main Content -->
+    <div class="relative z-10 flex flex-col md:flex-row h-screen w-screen">
+      <!-- Left Side - Image -->
+      <div class="md:w-1/2 w-full flex items-center justify-center bg-transparent p-6">
+        <img id="profileImage" src="profile.jpg" alt="Abhishek" class="rounded-full shadow-2xl w-72 h-72 object-cover border-4 border-cyan-400 charm-hover" />
       </div>
-      <div class="project-card">
-        <h3>Task Manager App</h3>
-        <p>A Flutter-based mobile app for managing daily tasks.</p>
-        <a href="#" class="project-link">GitHub Repo</a>
+
+      <!-- Right Side - Info -->
+      <div class="md:w-1/2 w-full flex items-center justify-center p-10 text-center md:text-left">
+        <div id="profileInfo" class="max-w-xl charm-hover">
+          <h1 class="text-5xl md:text-6xl font-extrabold text-cyan-400">Abhishek<br>Bogahawaththa</h1>
+          <p class="mt-6 text-xl text-gray-300">Software Engineer • Creative Developer • AI & Web Enthusiast</p>
+          <p class="mt-4 text-gray-400">I blend code with creativity to build immersive digital experiences.</p>
+          <a href="#projects" class="inline-block mt-8 px-6 py-3 border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black rounded-full transition duration-300">Explore Projects</a>
+        </div>
       </div>
     </div>
-  </section>
-  
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Let's Connect</h2>
-    <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="abihisheakbogahawaththa@gmail.com" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <script>
+      const profileImage = document.getElementById('profileImage');
+      const profileInfo = document.getElementById('profileInfo');
 
-  <!-- Footerr -->
-  <footer>
-    <p>© 2023 Abhishek. All Rights Reserved.</p>
-  </footer>
+      document.addEventListener('mousemove', (e) => {
+        const moveX = (e.clientX / window.innerWidth - 0.5) * 30;
+        const moveY = (e.clientY / window.innerHeight - 0.5) * 30;
 
-  <script src="script.js"></script>
-</body>
+        profileImage.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        profileInfo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+    </script>
+  </body>
 </html>
